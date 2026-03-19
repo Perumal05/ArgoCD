@@ -50,8 +50,3 @@ spec:
             cpu: "500m"
             memory: "512Mi"
 
-        envFrom:
-        - configMapRef:
-            name: app-config
-        - secretRef:
-            name: app-secret

@@ -6,7 +6,7 @@ spec:
   template:
     spec:
       containers:
-      - name: java-app
+      - name: my-app
         image: perumal1804/springboot-app:3a0e473
 
         volumeMounts:
