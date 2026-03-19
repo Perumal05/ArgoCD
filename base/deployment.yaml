@@ -16,7 +16,7 @@ spec:
       - name: dockerhub-secret
       containers:
       - name: my-app
-        image: YOUR_USERNAME/YOUR_IMAGE:latest
+        image: perumal1804/springboot-app:tag
         ports:
         - containerPort: 80
 
