@@ -3,18 +3,26 @@ kind: Deployment
 metadata:
   name: my-app
 spec:
-  replicas: 1
   template:
     spec:
       containers:
-      - name: my-app
-        image: docker.io/YOUR_USERNAME/YOUR_IMAGE:dev-latest
-        ports:
-        - containerPort: 8080
+      - name: java-app
+        image: perumal1804/springboot-app:3a0e473
+
+        volumeMounts:
+        - name: app-config-volume
+          mountPath: /config
+          readOnly: true
 
         env:
         - name: ENV
           value: dev
+
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: DB_PASSWORD
 
         resources:
           requests:
@@ -23,3 +31,8 @@ spec:
           limits:
             cpu: "200m"
             memory: "256Mi"
+
+      volumes:
+      - name: app-config-volume
+        configMap:
+          name: app-config

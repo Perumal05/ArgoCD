@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: my-app-dev
-  namespace: argocd
+  name: java-app
+  namespace: dev
 spec:
   destination:
-    namespace: default
+    namespace: dev
     server: https://kubernetes.default.svc
   source:
-    repoURL: https://github.com/YOUR_USERNAME/gitops-repo
+    repoURL: https://github.com/Perumal05/ArgoCD.git
     targetRevision: main
     path: overlays/dev
   project: default
