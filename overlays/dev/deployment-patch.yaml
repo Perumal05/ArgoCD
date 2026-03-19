@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+      - name: my-app
+        image: docker.io/YOUR_USERNAME/YOUR_IMAGE:dev-latest
+        ports:
+        - containerPort: 8080
+
+        env:
+        - name: ENV
+          value: dev
+
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "64Mi"
+          limits:
+            cpu: "200m"
+            memory: "256Mi"

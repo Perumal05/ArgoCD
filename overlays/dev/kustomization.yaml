@@ -1,0 +1,21 @@
+resources:
+- ../../base
+- externalsecret-app.yaml
+- externalsecret-docker.yaml
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+patches:
+- path: deployment-patch.yaml
+
+images:
+- name: docker.io/YOUR_USERNAME/YOUR_IMAGE
+  newTag: dev-latest
+
+# ✅ ConfigMapGenerator from folder
+configMapGenerator:
+- name: app-config
+  files:
+  - configmaps/app.properties
+
