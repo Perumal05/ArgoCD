@@ -9,6 +9,28 @@ spec:
       - name: my-app
         image: perumal1804/springboot-app:3a0e473
 
+        # ✅ Probes updated to port 8080
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10
+
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 15
+          periodSeconds: 20
+
+        startupProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          failureThreshold: 30
+          periodSeconds: 5
+
         volumeMounts:
         - name: app-config-volume
           mountPath: /config
@@ -17,11 +39,10 @@ spec:
         env:
         - name: ENV
           value: dev
-
         - name: DB_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: db-secret
+              name: app-secret
               key: DB_PASSWORD
 
         resources:
