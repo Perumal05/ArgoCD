@@ -36,8 +36,10 @@ patches:
       path: /metadata/name
       value: java-pdb
 
-patches:
-- path: deployment-patch.yaml
+- path: deployment-patch.yaml 
+
+# patches:
+# - path: deployment-patch.yaml
 
 # images:
 # - name: docker.io/YOUR_USERNAME/YOUR_IMAGE

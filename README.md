@@ -126,3 +126,11 @@ kubectl apply -f clustersecretstore.yaml
 ----------------------------------------------------------------------------------------------------------------------------------
 
 Then configure your respective external secrets with exact path and varaibles that you defined in the hashicrop vault
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+Before deploying application.yaml, create the namespace that you defined there
+
+kubectl create namespace dev
+
+kubectl get application -n argocd
