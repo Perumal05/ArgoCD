@@ -10,29 +10,29 @@ spec:
         image: perumal1804/springboot-app:3a0e473
 
         # ✅ Probes updated to port 8080
-        startupProbe:
-          httpGet:
-            path: /
-            port: 8080
-          failureThreshold: 60     # allow up to 5 minutes (60 * 5s)
-          periodSeconds: 5
-          timeoutSeconds: 5        # 🔥 VERY IMPORTANT
+        # startupProbe:
+        #   httpGet:
+        #     path: /
+        #     port: 8080
+        #   failureThreshold: 60     # allow up to 5 minutes (60 * 5s)
+        #   periodSeconds: 5
+        #   timeoutSeconds: 5        # 🔥 VERY IMPORTANT
 
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 8080
-          initialDelaySeconds: 70
-          periodSeconds: 10
-          timeoutSeconds: 5
+        # readinessProbe:
+        #   httpGet:
+        #     path: /
+        #     port: 8080
+        #   initialDelaySeconds: 70
+        #   periodSeconds: 10
+        #   timeoutSeconds: 5
 
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 8080
-          initialDelaySeconds: 90
-          periodSeconds: 20
-          timeoutSeconds: 5
+        # livenessProbe:
+        #   httpGet:
+        #     path: /
+        #     port: 8080
+        #   initialDelaySeconds: 90
+        #   periodSeconds: 20
+        #   timeoutSeconds: 5
 
         volumeMounts:
         - name: app-config-volume
