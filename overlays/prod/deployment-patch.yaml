@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+spec:
+  template:
+    spec:
+      containers:
+      - name: my-app
+        image: perumal1804/springboot-app:3a0e473
+
+        # ✅ Probes updated to port 8080
+        # startupProbe:
+        #   httpGet:
+        #     path: /
+        #     port: 8080
+        #   failureThreshold: 60     # allow up to 5 minutes (60 * 5s)
+        #   periodSeconds: 5
+        #   timeoutSeconds: 5        # 🔥 VERY IMPORTANT
+
+        # readinessProbe:
+        #   httpGet:
+        #     path: /
+        #     port: 8080
+        #   initialDelaySeconds: 70
+        #   periodSeconds: 10
+        #   timeoutSeconds: 5
+
+        # livenessProbe:
+        #   httpGet:
+        #     path: /
+        #     port: 8080
+        #   initialDelaySeconds: 90
+        #   periodSeconds: 20
+        #   timeoutSeconds: 5
+
+        volumeMounts:
+        - name: app-config-volume
+          mountPath: /config
+          readOnly: true
+
+        env:
+        - name: ENV
+          value: prod
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: DB_PASSWORD
+
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "64Mi"
+          limits:
+            cpu: "200m"
+            memory: "256Mi"
+
+      volumes:
+      - name: app-config-volume
+        configMap:
+          name: app-config
