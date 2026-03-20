@@ -14,22 +14,25 @@ spec:
           httpGet:
             path: /actuator/health
             port: 8080
-          failureThreshold: 30
+          failureThreshold: 60     # allow up to 5 minutes (60 * 5s)
           periodSeconds: 5
+          timeoutSeconds: 5        # 🔥 VERY IMPORTANT
 
         readinessProbe:
           httpGet:
             path: /actuator/health
             port: 8080
-          initialDelaySeconds: 60
+          initialDelaySeconds: 70
           periodSeconds: 10
+          timeoutSeconds: 5
 
         livenessProbe:
           httpGet:
             path: /actuator/health
             port: 8080
-          initialDelaySeconds: 60
+          initialDelaySeconds: 90
           periodSeconds: 20
+          timeoutSeconds: 5
 
         volumeMounts:
         - name: app-config-volume
