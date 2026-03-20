@@ -65,7 +65,7 @@ Add Secrets
 
 Path:
 
-secret/data/java-app
+java-app
 
 Key:
 
@@ -74,7 +74,7 @@ password = my-db-password
 
 Path:
 
-secret/data/dockerhub
+dockerhub
 
 Keys:
 
@@ -141,3 +141,11 @@ Test the application:
 kubectl port-forward svc/java-service 9999:80 -n dev
 
 localhost:9999
+
+Vault dashboard image: 
+
+![alt text](vault-dashboard.png)
+
+Final application dashboard image:
+
+![alt text](argo-dashboard.png)

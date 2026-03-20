@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   source:
     repoURL: https://github.com/Perumal05/ArgoCD.git
-    targetRevision: main
+    targetRevision: dev
     path: overlays/dev
   project: default
   syncPolicy:
