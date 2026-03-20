@@ -12,8 +12,8 @@ kubectl get pods -n argocd
 
 Expose ArgoCD UI:
 
-kubectl port-forward svc/argocd-server -n argocd 8080:443
-https://localhost:8080
+kubectl port-forward svc/argocd-server -n argocd 8888:443
+https://localhost:8888
 
 UI Login:
 
@@ -134,3 +134,10 @@ Before deploying application.yaml, create the namespace that you defined there
 kubectl create namespace dev
 
 kubectl get application -n argocd
+
+----------------------------------------------------------------------------------------------------------------------------------
+Test the application:
+
+kubectl port-forward svc/java-service 9999:80 -n dev
+
+localhost:9999

@@ -21,26 +21,26 @@ spec:
         - containerPort: 80
 
         # # ✅ Probes (VERY IMPORTANT for production)
-        # readinessProbe:
-        #   httpGet:
-        #     path: /health
-        #     port: 80
-        #   initialDelaySeconds: 5
-        #   periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 10
 
-        # livenessProbe:
-        #   httpGet:
-        #     path: /health
-        #     port: 80
-        #   initialDelaySeconds: 15
-        #   periodSeconds: 20
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 80
+          initialDelaySeconds: 15
+          periodSeconds: 20
 
-        # startupProbe:
-        #   httpGet:
-        #     path: /health
-        #     port: 80
-        #   failureThreshold: 30
-        #   periodSeconds: 5
+        startupProbe:
+          httpGet:
+            path: /health
+            port: 80
+          failureThreshold: 30
+          periodSeconds: 5
 
         resources:
           requests:
