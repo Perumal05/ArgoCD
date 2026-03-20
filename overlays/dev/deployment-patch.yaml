@@ -12,7 +12,7 @@ spec:
         # ✅ Probes updated to port 8080
         startupProbe:
           httpGet:
-            path: /actuator/health
+            path: /
             port: 8080
           failureThreshold: 60     # allow up to 5 minutes (60 * 5s)
           periodSeconds: 5
@@ -20,7 +20,7 @@ spec:
 
         readinessProbe:
           httpGet:
-            path: /actuator/health
+            path: /
             port: 8080
           initialDelaySeconds: 70
           periodSeconds: 10
@@ -28,7 +28,7 @@ spec:
 
         livenessProbe:
           httpGet:
-            path: /actuator/health
+            path: /
             port: 8080
           initialDelaySeconds: 90
           periodSeconds: 20
